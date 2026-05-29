@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>2026 Season Kit Shop</title>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            background-color:#f0f0f0;
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-family:sans-serif;
+        }
+        .page-wrapper{
+            position:relative;
+            width:100%;
+            max-width:450px;
+            margin:20px auto;
+            border:2px solid #ccc;
+            box-sizing:border-box;
+            background-color:#fff;
+        }
+        #mainImage{
+            width:100%;
+            height:auto;
+            display:block;
+        }
+        .click-trigger{
+            position:absolute;
+            left:5%;
+            width:90%;
+            height:13%;
+            cursor:pointer;
+            background:rgba(255,0,0,0);
+            z-index:10;
+        }
+        .shirt_button{top:52%;}
+        .collar_button{top:67%;}
+        .cap_button{top:82%;}
+        #backButton{
+            display:none;
+            position:absolute;
+            top:15px;
+            left:15px;
+            padding:8px 16px;
+            background-color:#ec184a;
+            color:white;
+            font-weight:bold;
+            border-radius:20px;
+            cursor:pointer;
+            box-shadow:0 2px 5px rgba(0,0,0,0.2);
+            z-index:20;
+            font-size:14px;
+        }
+        #backButton:hover{
+            background-color:#b30f35;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div id="backButton" onclick="goBack()">← Back</div>
+        <img id="mainImage" src="image.png" alt="Main Layout">
+        <div id="button1" class="click-trigger shirt_button" onclick="changeFrame('Frame3.png')"></div>
+        <div id="button2" class="click-trigger collar_button" onclick="changeFrame('Frame 4.png')"></div>
+        <div id="button3" class="click-trigger cap_button" onclick="changeFrame('Frame 5.png')"></div>
+    </div>
+    <script>
+        var mainImg=document.getElementById("mainImage");
+        var backBtn=document.getElementById("backButton");
+        var triggers=document.querySelectorAll('.click-trigger');
+
+        function changeFrame(nextFrameSrc){
+            mainImg.src=nextFrameSrc;
+            window.scrollTo({top:0,behavior:'smooth'});
+            backBtn.style.display="block";
+            triggers.forEach(el=>el.style.display="none");
+        }
+
+        function goBack(){
+            mainImg.src="image.png";
+            window.scrollTo({top:0,behavior:'smooth'});
+            backBtn.style.display="none";
+            triggers.forEach(el=>el.style.display="block");
+        }
+    </script>
+</body>
+</html>
